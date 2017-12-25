@@ -51,6 +51,8 @@ def predict(X_train, X_validation, y_train, y_validation, algorithm, model):
     # Prediction Report
     model.fit(X_train, y_train)
     predictions = model.predict(X_validation)
+    print('y_validation', y_validation)
+    print('predictions', predictions)
     print('Accuracy score:', algorithm, accuracy_score(y_validation, predictions))
     print('Confusion Matrix', confusion_matrix(y_validation, predictions))
     print('Classification report \n', algorithm, classification_report(y_validation, predictions))
@@ -100,11 +102,11 @@ def main():
 
     algorithm_dict = {
         'CART': DecisionTreeClassifier(),
-        'NB': GaussianNB(),
-        'SVC': SVC(),
-        'K-N': KNeighborsClassifier(),
-        'LR': LogisticRegression(),
-        'LDA': LinearDiscriminantAnalysis()
+        # 'NB': GaussianNB(),
+        # 'SVC': SVC(),
+        # 'K-N': KNeighborsClassifier(),
+        # 'LR': LogisticRegression(),
+        # 'LDA': LinearDiscriminantAnalysis()
     }
 
     results = []
@@ -120,7 +122,7 @@ def main():
         predict(X_train, X_validation, Y_train, Y_validation, key, value)
 
 
-    # Compare Cross Verification Results
+    # Compare Accuracy Results
     fig = plt.figure()
     fig.suptitle('Models Comparison')
     # axis = fig.add_subplot(1, 1, 1)
